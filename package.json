@@ -1,0 +1,21 @@
+{
+  "name": "tryvia",
+  "version": "1.0.0",
+  "description": "A trivia clone",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndCotOli/Tryvia.git"
+  },
+  "author": "Andreu Cotanda Oliver <cotoli23@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndCotOli/Tryvia/issues"
+  },
+  "homepage": "https://github.com/AndCotOli/Tryvia#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
