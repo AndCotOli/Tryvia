@@ -1,9 +1,8 @@
 import State from '../State.mjs';
 
 const state = new State('gameState', {
-  streakCount: 0,
   isPlaying: false,
-  currentDifficulty: ''
+  currentRound: 0
 });
 
 export default state;

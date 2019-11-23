@@ -1,32 +1,51 @@
 import getRandomQuestion from './game/getRandomQuestion.mjs';
 import gameState from './game/gameState.mjs';
 
-const startButton = document.getElementById('startButton');
 const answerText = document.getElementById('question');
 const answersList = document.getElementById('answers');
+const currentStreak = document.getElementsByClassName('current')[0];
+const maxStreak = document.getElementsByClassName('max')[0];
 
-startButton.addEventListener('click', async () => {
+const ANSWER_COLORS = ['green', 'orange', 'red', 'blue'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  prepareDOM();
   serveQuestionAndAnswer();
 });
 
+function prepareDOM() {
+  currentStreak.innerHTML = `Current Streak: ${gameState.get('currentRound')}`;
+  maxStreak.innerHTML = `Max Streak: ${localStorage.getItem('maxStreak')}`;
+}
+
 async function serveQuestionAndAnswer() {
   console.log(gameState);
-  const question = await getRandomQuestion();
+  const questionDifficulty =
+    gameState.get('currentRound') < 20
+      ? 'easy'
+      : gameState.get('currentRound') >= 20 &&
+        gameState.get('currentRound') <= 60
+      ? 'medium'
+      : 'hard';
+  const question = await getRandomQuestion(questionDifficulty);
+  console.log(question);
 
-  gameState.set('currentDifficulty', question.difficulty);
-  console.log(gameState.get('currentDifficulty'));
   answerText.innerHTML = question.question;
   const answers = shuffle([
     question.correct_answer,
     ...question.incorrect_answers
   ]);
   answersList.innerHTML = '';
-  answers.forEach(answer => {
+  answers.forEach((answer, i) => {
     const ansDiv = document.createElement('div');
-    ansDiv.innerText = answer;
+    ansDiv.innerHTML = answer;
+    ansDiv.className = `answer ${
+      question.correct_answer === answer ? 'correct' : ''
+    } ${ANSWER_COLORS[i]}`;
     ansDiv.addEventListener('click', () => {
       if (question.correct_answer === answer) {
-        gameState.set('streakCount', gameState.get('streakCount') + 1);
+        gameState.set('currentRound', gameState.get('currentRound') + 1);
+        prepareDOM();
         serveQuestionAndAnswer();
       } else endGame();
     });
@@ -38,9 +57,11 @@ function endGame() {
   console.log('Sorry, you lost');
   if (
     !localStorage.getItem('maxStreak') ||
-    localStorage.getItem('maxStreak') < gameState.get('streakCount')
+    localStorage.getItem('maxStreak') < gameState.get('currentRound')
   )
-    localStorage.setItem('maxStreak', gameState.get('streakCount'));
+    localStorage.setItem('maxStreak', gameState.get('currentRound'));
+  gameState.set('currentRound', 0);
+  prepareDOM();
   serveQuestionAndAnswer();
 }
 
