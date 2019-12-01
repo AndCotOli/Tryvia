@@ -6,12 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tryvia</title>
 
-    <link rel="stylesheet" href="./src/styles/main_landing.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
     <script src="./src/scripts/main_landing.js" type="module"></script>
+    <link rel="stylesheet" href="./src/styles/main_landing.css" />
   </head>
   <body>
-    <h1>Tryvia</h1>
+    <main class="hero is-fullheight">
+      <div class="container level">
+        <h1 class="title is-1 has-text-white" id="title">Tryvia</h1>
+      </div>
 
-    <a href="game.html">To the Game</a>
+      <div class="container level is-mobile">
+        <a class="button is-light is-medium" href="game.html">Play the Game!</a>
+        <a class="button is-light is-medium" href="#about">Know More</a>
+      </div>
+    </main>
+
+    <section class="hero is-fullheight" id="about">
+      <div class="column">
+        <div class="about-question">
+          <h2 class="title about-question has-text-white">What is this?</h2>
+          <p class="subtitle has-text-white">
+            Welcome to Tryvia, an online trivia game. Get random questions asked
+            in Trivia games and try to answer them. What will be your max
+            streak?
+          </p>
+        </div>
+        <div class="about-question">
+          <h2 class="title about-question has-text-white">Why I built it?</h2>
+          <p class="subtitle has-text-white">
+            I've always liked question games, and what a best way to prove it
+            than building an online clone of Trivia?
+          </p>
+        </div>
+        <div class="about-question">
+          <h2 class="title about-question has-text-white">How can you play?</h2>
+          <p class="subtitle has-text-white">
+            Once the game has started, we will answer you a question asked in a
+            Trivia game, and you'll have 20 seconds to select the correct
+            answer. Questions will become harder and harder, how many of them
+            can you answer correctly in a row?
+          </p>
+        </div>
+      </div>
+
+      <span class="icon  is-large">
+        <a class="has-text-white" href="https://www.github.com/andcotoli">
+          <i class="fab fa-3x fa-github"></i>
+        </a>
+      </span>
+    </section>
   </body>
 </html>

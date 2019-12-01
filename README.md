@@ -19,7 +19,7 @@ I also plan to add a 'practice' mode, where users can choose different trivia ca
 
 ## Tech Stack
 
-* Vanilla JS and CSS (atm).
+* Vanilla JS and Bulma Css
 * Cypress
 
 ## Will you try to implement any stretch features?

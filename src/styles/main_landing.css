@@ -1,0 +1,27 @@
+a {
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+
+main {
+  background-image: url('../public/trivial.jpg');
+  background-size: cover;
+}
+
+.button {
+  opacity: 75%;
+  transition: opacity 0.3s;
+}
+
+.button:hover {
+  transition: opacity 0.3s;
+  opacity: 100%;
+}
+
+.about-question {
+  margin-bottom: 5%;
+}
+
+#about {
+  background: linear-gradient(#606c88, #3f4c6b);
+}
