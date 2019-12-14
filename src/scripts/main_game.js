@@ -21,7 +21,6 @@ function prepareDOM() {
 }
 
 async function serveQuestionAndAnswer() {
-  console.log(gameState);
   const questionDifficulty =
     gameState.get('currentRound') < 20
       ? 'easy'
@@ -30,7 +29,6 @@ async function serveQuestionAndAnswer() {
       ? 'medium'
       : 'hard';
   const question = await getRandomQuestion(questionDifficulty);
-  console.log(question);
 
   answerText.innerHTML = question.question;
   const answers = shuffle([
