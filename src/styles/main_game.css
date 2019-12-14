@@ -1,16 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 * {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-}
-
-.gameCard {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
 }
 
 #question {
@@ -19,14 +12,8 @@
   margin: auto;
 }
 
-#answers {
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 95%;
+.end-message {
+  display: none;
 }
 
 .answer {
@@ -36,6 +23,7 @@
   line-height: 400px;
   margin: auto;
   text-align: center;
+  cursor: pointer;
 }
 
 .blue {
@@ -52,4 +40,4 @@
 
 .red {
   background-color: #eb213c;
-} */
+}

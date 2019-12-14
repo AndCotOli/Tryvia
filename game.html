@@ -18,19 +18,40 @@
     <script src="./src/scripts/main_game.js" type="module"></script>
   </head>
   <body>
-    <div class="level">
-      <h2 class="level-left">Tryvia</h2>
-      <div class="level-right">
-        <p class="level-item current">Current Streak:</p>
-        <p class="level-item max">Max Streak:</p>
-      </div>
-    </div>
     <main class="hero is-fullheight level">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a href="index.html" class="navbar-item">Tryvia</a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <p class="navbar-item" id="current-streak"></p>
+            <p class="navbar-item" id="max-streak"></p>
+          </div>
+        </div>
+      </nav>
+
       <div class="level">
         <p id="question" class="level title"></p>
-        <!-- <progress class="progress is-info"></progress> -->
       </div>
       <div class="level" id="answers"></div>
     </main>
+
+    <div class="modal" id="end-message">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Oops, you've lost 😥...</p>
+        </header>
+        <section class="modal-card-body">
+          <p id="final-streak">Your streak:</p>
+          <p id="final-max">Your max streak:</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="play-again">Play again!</button>
+          <a href="index.html" class="button">Go to main page</a>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>

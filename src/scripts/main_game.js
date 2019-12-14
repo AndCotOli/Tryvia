@@ -3,8 +3,8 @@ import gameState from './game/gameState.mjs';
 
 const answerText = document.getElementById('question');
 const answersList = document.getElementById('answers');
-const currentStreak = document.getElementsByClassName('current')[0];
-const maxStreak = document.getElementsByClassName('max')[0];
+const currentStreak = document.getElementById('current-streak');
+const maxStreak = document.getElementById('max-streak');
 
 const ANSWER_COLORS = ['green', 'orange', 'red', 'blue'];
 
@@ -39,38 +39,46 @@ async function serveQuestionAndAnswer() {
   ]);
   answersList.innerHTML = '';
   answers.forEach((answer, i) => {
-    const ansButton = document.createElement('button');
-    ansButton.innerHTML = answer;
-    ansButton.className = `answer ${
-      question.correct_answer === answer ? 'correct' : ''
-    } ${ANSWER_COLORS[i]}`;
-    ansButton.addEventListener('click', () => {
+    const ansElement = document.createElement('div');
+    ansElement.innerHTML = answer;
+    ansElement.classList.add('answer', ANSWER_COLORS[i]);
+
+    ansElement.addEventListener('click', () => {
       if (question.correct_answer === answer) {
         gameState.set('currentRound', gameState.get('currentRound') + 1);
         prepareDOM();
         serveQuestionAndAnswer();
       } else endGame();
     });
-    answersList.appendChild(ansButton);
+    answersList.appendChild(ansElement);
   });
 }
 
 function endGame() {
-  console.log('Sorry, you lost');
   if (
     !localStorage.getItem('maxStreak') ||
     localStorage.getItem('maxStreak') < gameState.get('currentRound')
   )
     localStorage.setItem('maxStreak', gameState.get('currentRound'));
-  gameState.set('currentRound', 0);
-  prepareDOM();
-  serveQuestionAndAnswer();
+
+  const endMessage = document.getElementById('end-message');
+  const finalStreak = document.getElementById('final-streak');
+  const maxStreak = document.getElementById('final-max');
+  const playAgainBtn = document.getElementById('play-again');
+
+  finalStreak.innerText = `Current Streak: ${gameState.get('currentRound')}`;
+  maxStreak.innerText = `Max Streak: ${localStorage.getItem('maxStreak')}`;
+
+  endMessage.classList.add('is-active');
+
+  playAgainBtn.addEventListener('click', () => {
+    endMessage.classList.remove('is-active');
+    gameState.set('currentRound', 0);
+    prepareDOM();
+    serveQuestionAndAnswer();
+  });
 }
 
-/**
- * Shuffles array in place.
- * @param {Array} a - an array containing the items.
- */
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
