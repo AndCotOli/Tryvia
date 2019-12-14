@@ -1,5 +1,9 @@
-import getRandomQuestion from './game/getRandomQuestion.mjs';
-import gameState from './game/gameState.mjs';
+import State from './State.mjs';
+
+const gameState = new State('gameState', {
+  isPlaying: false,
+  currentRound: 0
+});
 
 const answerText = document.getElementById('question');
 const answersList = document.getElementById('answers');
@@ -83,4 +87,12 @@ function shuffle(a) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+async function getRandomQuestion(difficulty) {
+  let data = await fetch(
+    `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=multiple`
+  );
+  let question = await data.json();
+  return question.results[0];
 }
