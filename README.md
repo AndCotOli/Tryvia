@@ -24,16 +24,16 @@ I also plan to add a 'practice' mode, where users can choose different trivia ca
 
 ## Will you try to implement any stretch features?
 
-* Linter
-* UI Animations
-* CSS Flexbox
-* Persistance
-* State management
-* JSDoc
-* E2E
-* PWA
-* CI/CD
-* Build Process
+* [x] Linter
+* [ ] UI Animations
+* [ ] CSS Flexbox
+* [x] Persistance
+* [x] State management
+* [ ] JSDoc
+* [ ] E2E
+* [ ] PWA
+* [ ] CI/CD
+* [ ] Build Process
 
 I'll try to implement as much as I can, if time allows.
 
