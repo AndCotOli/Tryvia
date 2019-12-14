@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function prepareDOM() {
   currentStreak.innerHTML = `Current Streak: ${gameState.get('currentRound')}`;
-  maxStreak.innerHTML = `Max Streak: ${localStorage.getItem('maxStreak')}`;
+  maxStreak.innerHTML = `Max Streak: ${
+    localStorage.getItem('maxStreak') ? localStorage.getItem('maxStreak') : 0
+  }`;
 }
 
 async function serveQuestionAndAnswer() {
@@ -37,19 +39,19 @@ async function serveQuestionAndAnswer() {
   ]);
   answersList.innerHTML = '';
   answers.forEach((answer, i) => {
-    const ansDiv = document.createElement('div');
-    ansDiv.innerHTML = answer;
-    ansDiv.className = `answer ${
+    const ansButton = document.createElement('button');
+    ansButton.innerHTML = answer;
+    ansButton.className = `answer ${
       question.correct_answer === answer ? 'correct' : ''
     } ${ANSWER_COLORS[i]}`;
-    ansDiv.addEventListener('click', () => {
+    ansButton.addEventListener('click', () => {
       if (question.correct_answer === answer) {
         gameState.set('currentRound', gameState.get('currentRound') + 1);
         prepareDOM();
         serveQuestionAndAnswer();
       } else endGame();
     });
-    answersList.appendChild(ansDiv);
+    answersList.appendChild(ansButton);
   });
 }
 
@@ -66,7 +68,7 @@ function endGame() {
 }
 
 /**
- * Shuffles array in place. ES6 version
+ * Shuffles array in place.
  * @param {Array} a - an array containing the items.
  */
 function shuffle(a) {

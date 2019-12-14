@@ -6,16 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tryvia</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
     <link rel="stylesheet" href="./src/styles/main_game.css" />
     <script src="./src/scripts/main_game.js" type="module"></script>
   </head>
   <body>
-    <main class="gameCard">
-      <p id="question"></p>
-      <span class="current">Current Streak: </span>
-      <span class="max">Max Streak: </span>
-      <div id="answers"></div>
+    <div class="level">
+      <h2 class="level-left">Tryvia</h2>
+      <div class="level-right">
+        <p class="level-item current">Current Streak:</p>
+        <p class="level-item max">Max Streak:</p>
+      </div>
+    </div>
+    <main class="hero is-fullheight level">
+      <div class="level">
+        <p id="question" class="level title"></p>
+        <!-- <progress class="progress is-info"></progress> -->
+      </div>
+      <div class="level" id="answers"></div>
     </main>
-    <!-- <a href="/Tryvia">Landing page</a> -->
   </body>
 </html>

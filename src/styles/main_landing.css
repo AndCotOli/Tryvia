@@ -18,6 +18,10 @@ main {
   opacity: 100%;
 }
 
+.about-questions {
+  margin-top: 5px;
+}
+
 .about-question {
   margin-bottom: 5%;
 }

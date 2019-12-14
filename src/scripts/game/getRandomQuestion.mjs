@@ -1,6 +1,6 @@
 async function getRandomQuestion(difficulty) {
   let data = await fetch(
-    `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}`
+    `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=multiple`
   );
   let question = await data.json();
   return question.results[0];
